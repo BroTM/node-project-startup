@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       token: DataTypes.STRING,
+      status: DataTypes.ENUM,
       created_by: DataTypes.STRING,
       created_at: DataTypes.Date,
       updated_at: DataTypes.Date,

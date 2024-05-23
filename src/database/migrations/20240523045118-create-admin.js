@@ -1,5 +1,5 @@
 'use strict'
-const { TABLES } = require('../../../helpers/constant')
+const { TABLES, ADMIN_STATUS } = require('../../../helpers/constant')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -13,24 +13,30 @@ module.exports = {
       name: {
         type: Sequelize.STRING(100),
         allowNull: false,
-        comment: "show name",
+        comment: 'show name',
       },
       email: {
         type: Sequelize.STRING(100),
         allowNull: false,
-        comment: "unique email",
+        comment: 'unique email',
         unique: true,
       },
       password: {
         type: Sequelize.STRING,
         allowNull: false,
-        comment: "AES hash password",
+        comment: 'AES hash password',
       },
       token: {
         type: Sequelize.STRING(45),
         allowNull: true,
         unique: true,
-        comment: "unique md5 hash token",
+        comment: 'unique md5 hash token',
+      },
+      status: {
+        type: Sequelize.ENUM,
+        values: Object.values(ADMIN_STATUS),
+        defaultValue: ADMIN_STATUS.NO_VERIFY,
+        allowNull: false,
       },
       created_by: {
         allowNull: false,
