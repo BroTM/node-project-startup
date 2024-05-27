@@ -1,6 +1,6 @@
 'use strict'
 
-const { TABLES, MODELS } = require('../../../helpers/constant')
+const { TABLES, MODELS, ADMIN_STATUS } = require('../../../helpers/constant')
 
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
@@ -21,13 +21,14 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       token: DataTypes.STRING,
-      status: DataTypes.ENUM,
+      status: DataTypes.ENUM(Object.values(ADMIN_STATUS)),
       created_by: DataTypes.STRING,
-      created_at: DataTypes.Date,
-      updated_at: DataTypes.Date,
+      created_at: DataTypes.DATE,
+      updated_at: DataTypes.DATE,
     },
     {
       sequelize,
+      timestamps: false,
       modelName: MODELS.ADMIN,
       tableName: TABLES.ADMIN,
     }
