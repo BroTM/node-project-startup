@@ -6,6 +6,7 @@ var logger = require('morgan')
 require('dotenv').config()
 
 var apiRouter = require('./src/routes/api')
+const CustomError = require('./helpers/custom-error')
 
 var app = express()
 
@@ -28,13 +29,19 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
-
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error')
+  let msg = 'Internal Error.',
+    error = err,
+    statusCode = 500
+  if (err instanceof CustomError) {
+    msg = err.message
+    error = err.errors
+    statusCode = err.statusCode
+  }
+  res.status(statusCode).send({
+    status: false,
+    message: msg,
+    body: error,
+  })
 })
 
 module.exports = app

@@ -1,6 +1,7 @@
 {
   "name": "jg-website-api",
   "version": "1.0.0",
+  "type": "commonjs",
   "description": "jg website api",
   "main": "index.js",
   "scripts": {
@@ -29,7 +30,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jsonwebtoken": "^9.0.2",
-    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.45",
     "morgan": "~1.9.1",
     "mysql2": "^3.9.7",
     "sequelize": "^6.37.3",
