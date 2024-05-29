@@ -5,6 +5,21 @@ const uuid = require('uuid')
 const crypto_js = require('crypto-js')
 
 class Util {
+  /**
+   * get pagination info
+   * @param {Object} params
+   * @returns Object
+   */
+  static pagination(params) {
+    let pageSize = 10
+    let page = 1
+
+    if (params?.pageSize) pageSize = params.pageSize
+    if (params?.page) page = params.page
+    const offset = (page - 1) * pageSize
+
+    return { pageSize, offset, page }
+  }
   /** primary key
    * @returns String
    */

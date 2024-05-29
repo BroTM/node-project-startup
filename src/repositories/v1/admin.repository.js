@@ -12,7 +12,20 @@ const Utils = require('../../../helpers/utils')
 
 class AdminRepository {
   static async get(params) {
-    return { data: 'hello' }
+    const { offset, ...pgn } = Utils.pagination(params)
+
+    const result_ = await Admin.findAndCountAll({
+      limit: pgn.pageSize,
+      offset: offset,
+      attributes: ['admin_id', 'name', 'email', 'status'],
+      order: [['created_at', 'DESC']],
+    })
+
+    // Pagination information
+    pgn.totalRow = result_.count
+    pgn.totalPage = Math.ceil(pgn.totalRow / pgn.pageSize)
+
+    return { admins: result_.rows, pagination: pgn }
   }
 
   /**
