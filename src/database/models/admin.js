@@ -16,7 +16,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Admin.init(
     {
-      admin_id: DataTypes.STRING,
+      admin_id: {
+        type: DataTypes.STRING(45),
+        primaryKey: true,
+        defaultValue: () => ['p1', 'p2'].join('-'),
+      },
       name: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,

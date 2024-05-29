@@ -8,6 +8,7 @@ module.exports = {
       admin_id: {
         allowNull: false,
         primaryKey: true,
+        autoIncrement: false,
         type: Sequelize.STRING(45),
       },
       name: {
