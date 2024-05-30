@@ -7,6 +7,19 @@ const jwt = require('jsonwebtoken')
 
 class Util {
   /**
+   * request parameter
+   * @param {Request} req
+   * @returns params obj
+   */
+  static p(req) {
+    return {
+      ...req.body,
+      ...req.params,
+      ...req.query,
+      lang: req.lang,
+    }
+  }
+  /**
    * get pagination info
    * @param {Object} params
    * @returns Object

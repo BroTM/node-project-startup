@@ -40,7 +40,7 @@ class AdminRepository {
    * @returns { Admin, Pagination }
    */
   static async getOne(params) {
-    const admin_ = await Admin.findOne({ where: { admin_id: params.admin_id } })
+    const admin_ = await Admin.findOne({ where: { admin_id: params.id } })
 
     if (!admin_) throw new CustomError(MSG[params.lang].ADMIN_NOT_FOUND, 404)
 
