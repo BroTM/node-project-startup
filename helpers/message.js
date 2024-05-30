@@ -1,4 +1,7 @@
 const EN = {
+  REQUEST_NOT_ALLOW: 'Request not allow.',
+  INVALID_TOKEN: 'Invalid token.',
+  TOKEN_EXPIRED: 'Token expired.',
   ADMIN_NOT_FOUND: 'Admin not found.',
   ADMIN_ALREADY_EXIT: 'Admin Already Exist.',
   INCORRECT_EMAIL: 'Incorrect email.',
