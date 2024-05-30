@@ -29,7 +29,7 @@ const VerifyToken = async (req, res, next) => {
     let data = Utils.decryptJWTData(jwt_data)
     const admin = await Admin.findOne({ attributes: { exclude: ['token', 'password'] }, where: { token: data.token } })
 
-    if (!admin) throw new CustomError(MSG[req.lang].INVALID_TOKEN, 401)
+    if (!admin) throw new CustomError(MSG[req.lang].TOKEN_EXPIRED, 401)
 
     req.user = admin.dataValues
 
