@@ -1,5 +1,7 @@
 'use strict'
 
+const Response = require('../../../helpers/response')
+
 const { AdminRepository } = require('../../repositories/v1/index')
 
 /** get all admins process */
@@ -8,7 +10,9 @@ exports.get = async (req, res, next) => {
     // validation and process
 
     const result = await AdminRepository.get({})
-    res.send(result)
+
+    const response = new Response(result, req.method)
+    res.send(response.format())
   } catch (err) {
     next(err)
   }
@@ -20,7 +24,9 @@ exports.getOne = async (req, res, next) => {
     // validation and process
 
     const result = await AdminRepository.getOne({ admin_id: req.params.id })
-    res.send(result)
+
+    const response = new Response(result, req.method)
+    res.send(response.format())
   } catch (err) {
     next(err)
   }
@@ -44,7 +50,9 @@ exports.login = async (req, res, next) => {
     // validation and process
 
     const result = await AdminRepository.login(req.body)
-    res.send(result)
+
+    const response = new Response(result, req.method)
+    res.send(response.format())
   } catch (err) {
     next(err)
   }
