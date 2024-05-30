@@ -6,11 +6,11 @@ const defaultData = (req, res, next) => {
     let lang = req.body?.lang
 
     /**
-     * - check allow lang
      * - not specify
+     * - check allow lang
      */
-    if (lang && !Object.keys(MSG).includes(lang)) throw new CustomError(MSG.EN.LANG_NOT_FOUND, 400)
-    else if (!lang) lang = 'EN'
+    if (!lang) lang = 'EN'
+    else if (!Object.keys(MSG).includes(lang)) throw new CustomError(MSG.EN.LANG_NOT_FOUND, 400)
 
     req.lang = lang
 
