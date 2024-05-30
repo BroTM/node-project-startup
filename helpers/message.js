@@ -1,4 +1,5 @@
 const EN = {
+  LANG_NOT_FOUND: 'Language not support.',
   REQUEST_NOT_ALLOW: 'Request not allow.',
   INVALID_TOKEN: 'Invalid token.',
   TOKEN_EXPIRED: 'Token expired.',
