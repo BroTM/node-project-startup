@@ -34,7 +34,18 @@ exports.add = async (req, res, next) => {
     await AdminRepository.add(req.body)
     res.status(204).send()
   } catch (err) {
-    console.log(err)
+    next(err)
+  }
+}
+
+/** login process */
+exports.login = async (req, res, next) => {
+  try {
+    // validation and process
+
+    const result = await AdminRepository.login(req.body)
+    res.send(result)
+  } catch (err) {
     next(err)
   }
 }
