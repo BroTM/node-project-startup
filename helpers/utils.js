@@ -28,8 +28,8 @@ class Util {
     let pageSize = 10
     let page = 1
 
-    if (params?.pageSize) pageSize = params.pageSize
-    if (params?.page) page = params.page
+    if (params?.pageSize) pageSize = parseInt(params.pageSize)
+    if (params?.page) page = parseInt(params.page)
     const offset = (page - 1) * pageSize
 
     return { pageSize, offset, page }
